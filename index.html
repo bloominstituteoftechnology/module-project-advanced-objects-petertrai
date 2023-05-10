@@ -17,7 +17,7 @@
     // To do this, translate each 🧠 set of instructions into a working class.
     // ❗ Classes are scaffolded for you.
     // ❗ Watch the Guided Project to learn proper debugging technique.
-s
+
     // 👉 CHALLENGE 1
     // 🧠 Build a PeterPan class. This class allows to instantiate persons with Peter Pan syndrome.
     // 🧠 When instantiating a new person using this class, we provide a string with the name of the person.
@@ -25,8 +25,18 @@ s
     // 🧠 The person also has an `ageGracefully` method, which increases `age` by 1 each time it's called.
     // 🧠 But there's a catch: once `age` reaches 12, the `ageGracefully` method will have no effect.
     class PeterPan {
-
+      constructor(name) {
+        this.name = name
+        this.age = 0;
+      }
+      ageGracefully() {
+        if (this.age < 12)
+        this.age++
+        return this.age
+      }
     }
+    const person = new PeterPan('pooper')
+    console.log(person.ageGracefully())
 
     // 👉 CHALLENGE 2
     // 🧠 Build an AirPlane class. This class allows to instantiate airplanes.
@@ -38,8 +48,25 @@ s
     // 🧠 Calling `down` changes the `altitude` prop appropriately and returns the updated `altitude`.
     // 🧠 If calling `down` would cause the plane to go below altitude zero, `altitude` is set to 0 and the string "CRASH!" is returned.
     class AirPlane {
-
+      constructor(model){
+        this.model = model
+        this.altitude = 0
+      }
+      up(meters) {
+        return this.altitude+= meters
+        
+      }
+      down(meters) {
+        if ((this.altitude - meters) > 0) {
+        return this.altitude-= meters
+       
+        } else {
+          this.altitude = 0
+          return 'CRASH!'
+        }
+      }
     }
+    
 
     // 👉 CHALLENGE 3
     // 🧠 Build a Bulb class.
@@ -48,7 +75,27 @@ s
     // 🧠 The methods work as one might expect, changing the value of `isOn` to the appropriate Boolean.
     // 🧠 The methods also return one of these two strings: "You turned the bulb ON", or "You turned the bulb OFF".
     class Bulb {
+      constructor() {
+        this.isOn = false
 
+      }
+      turnOn(){
+        this.isOn = true
+        return "You turned the bulb ON"
+      }
+      turnOff(){
+        this.isOn = false
+        return "You turned the bulb OFF"
+      }
+      toggle(){
+        if (this.isOn === false) {
+          this.isOn = true
+        return "You turned the bulb ON"
+        } else {
+          this.isOn = false
+        return "You turned the bulb OFF"
+        }
+      }
     }
 
     // 👉 CHALLENGE 4
@@ -66,8 +113,24 @@ s
     //   minusThree.count() // returns null
     //   minusThree.count() // returns null
     class CountDown {
+      constructor(num) {
+        this.num = num
+      }
+      count() {
+        if (this.num === 0) {
+          this.num--
+          return `Liftoff!`
+        } else if (this.num > 0) {
+          return `${this.num--}!`
+            
+          } 
+          else {
+            return null
+          }
+      }
+      }
+    let minusThree = new CountDown(3)
 
-    }
 
     // 🧪 TESTS, do not work below this line
     // 🧪 TESTS, do not work below this line
